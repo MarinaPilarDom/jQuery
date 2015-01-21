@@ -69,7 +69,6 @@ It looks like both our event handler on .photos li elements are exactly the same
   $("#tour").on("click", "button", function() {
     $(".photos").slideToggle();
   });
-
   function showPhotos() {
     $(this).find("span").slideToggle();
   }
