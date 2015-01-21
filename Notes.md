@@ -121,3 +121,91 @@ Let's write another event handler for the form field that will be run when the f
   });
 });`
 
+
+4.18 Link Events I
+Write an event handler that will target all links with a class of .see-photos on click.
+
+`$(document).ready(function() {
+  $('.see-photos').on('click', function(event) {
+    event.preventDefault();
+  });
+});`
+
+4.19 Link Events II 
+When this link is clicked, show the photos for the clicked tour by traversing to it using closest and find then sliding it down by using slideToggle.
+
+`$(document).ready(function() {
+  $('.see-photos').on('click', function(event) {
+    event.preventDefault();
+    $(this).closest('.tour').find('.photos').slideToggle();
+  });
+});`
+
+4.20 Event Parameter I
+Change your event handler method to take in a link event and prevent the other event handler from being called.
+
+'$(document).ready(function() {
+  $('.see-photos').on('click', function(event) {
+    event.stopPropagation();
+    $(this).closest('.tour').find('.photos').slideToggle();
+  });
+  $('.tour').on('click', function() {
+    alert('This should not be called');
+  });
+});'
+
+4.21 Event Parameter II 
+Let's change this so that the browser doesn't jump to the top of the page when the link is clicked as well.
+
+`$(document).ready(function() {
+  $('.see-photos').on('click', function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    $(this).closest('.tour').find('.photos').slideToggle();
+  });
+  $('.tour').on('click', function() {
+    alert('This should not be called');
+  });
+});`
+
+5.3 CSS I
+Let's try to make this page stand out a bit more. For starters, let's add an event handler that will set the background-color to #252b30 using the css method whenever the mouseenter event is triggered.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).css('background-color', '#252b30');
+  });
+});`
+
+5.4 CSS II
+Let's set the font-weight to bold as well by passing in a JavaScript object to the css method.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).css({'background-color': '#252b30',
+                 'font-weight': 'bold'});
+  });
+});`
+
+5.5 Show Photo 
+Let's see what the tour page would look like if we showed the photos on mouseenter as well. Try using the show method here to make it visible.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).css({'background-color': '#252b30', 'font-weight': 'bold'});
+    $('.photos').show();
+  });
+});`
+
+5.6 Refactoring to CSS
+We've extracted out our styles into a new CSS class of highlight. Go ahead and add this class when the tour is moused over. Also, add another event handler for when the mouse leaves the .tour element to remove this class by watching for mouseleave.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).addClass('highlight');
+  }).on('mouseleave', function(){
+      $(this).removeClass('highlight');
+  });
+});`
+
+
