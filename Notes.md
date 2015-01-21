@@ -14,5 +14,10 @@ In this new click event handler, show the .photos element by querying the DOM fo
 4.6 Slide Effect II
 
 `
+$(document).ready(function() { 
+  $("#tour").on("click", "button", function() { 
+    $(".photos").slideToggle();
+  });
+});
 
 `
