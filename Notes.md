@@ -10,3 +10,9 @@ In this new click event handler, show the .photos element by querying the DOM fo
     $('.photos').slideDown();
   });
 });`
+
+4.6 Slide Effect II
+
+`
+
+`
