@@ -221,3 +221,41 @@ Let's continue seeing what we can do to add more flavor to our tours page. When 
     $(this).removeClass('highlighted');
   });
 });`
+
+5.9 Animate II 
+The price per night will now fade, but let's make it move a little as well. We can't use slideDown for this with our animate call, though. When the mouseenter event is triggered, animate the top property to -14px in order to move it up a bit.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).addClass('highlighted');
+    $(this).find('.per-night').animate({'opacity': '1', 'top': '-14px'});    
+  });
+  $('.tour').on('mouseleave', function() {
+    $(this).removeClass('highlighted');
+  });
+});`
+
+5.10 Animation Speed
+This animation lacks the pop we're looking for. Let's speed it up to run in 200ms using the fast shorthand.
+
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).addClass('highlighted');
+    $(this).find('.per-night').animate({'top': '-14px','opacity': '1'}, 'fast');
+  });
+  $('.tour').on('mouseleave', function() {
+    $(this).removeClass('highlighted');
+  });
+});`
+
+5.11 Animate II
+`$(document).ready(function() {
+  $('.tour').on('mouseenter', function() {
+    $(this).addClass('highlighted');
+    $(this).find('.per-night').animate({'top': '-14px','opacity': '1'}, 'fast');
+  });
+  $('.tour').on('mouseleave', function() {
+    $(this).removeClass('highlighted');
+    $('.per-night').animate({'top': '0','opacity': '0'}, 'fast');
+  });
+});`
