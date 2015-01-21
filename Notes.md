@@ -34,3 +34,15 @@ Our tour page is going great! Let's add a bit more behavior to the page though. 
     $(this).find('span').slideToggle();
   });
 });`
+
+4.9 Mouseover II 
+In our new mouseenter event handler, call slideToggle on the span tag within the picture description. You'll need to traverse down from the current element, the li, and find the span tag.
+
+`$(document).ready(function() { 
+  $('#tour').on('click', 'button', function() { 
+    $('.photos').slideToggle();
+  });
+  $('.photos').on('mouseenter', 'li', function() {
+    $(this).find('span').slideToggle();
+  });
+});`
