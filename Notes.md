@@ -84,3 +84,40 @@ We've made a few changes to our tour page. Now we'll allow travelers to specify 
      $('#nights-count').text($(this).val());
   });
 });'
+
+4.14 Keyup Event Handler I
+Within our event handler, update the number of nights in the #nights-count element to whatever the traveler entered in the #nights form field.
+
+`$(document).ready(function() {
+  $("#nights").on("keyup", function() {
+    $("#nights-count").text($(this).val());
+  });
+});`
+
+4.15 Keyup Event Handler II 
+Set the content of the #total element to the number the traveler has entered into the form field multiplied by the daily price.
+
+`$(document).ready(function() {
+  $('#nights').on("keyup", function() {
+    var nights = +$(this).val();
+    var dailyPrice = +$(this).closest('.tour').data('daily-price');
+    $('#total').text(nights * dailyPrice);
+    $('#nights-count').text($(this).val());
+  });
+});`
+
+4.16 Another Event Handler 
+Let's write another event handler for the form field that will be run when the focus event is triggered. When this occurs, set the number of nights to 7.
+
+
+`$(document).ready(function() {
+  $('#nights').on('keyup', function() {
+    var nights = +$(this).val();
+    var dailyPrice = +$(this).closest('.tour').data('daily-price');
+    $('#total').text(nights * dailyPrice);
+    $('#nights-count').text($(this).val());
+  }).on('focus', function(){
+    $(this).val('7');
+  });
+});`
+
